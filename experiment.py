@@ -1,3 +1,15 @@
+# define our data with manual coefficients
+intercept = 3.4
+
+coeffs = [3.2, 2.1, 4.5, 2.6]
+
+dataset = {
+    0: [3, 1.5],
+    1: [1, 7.6],
+    2: [3, 8.3],
+    3: [4, 3.2]
+}
+
 def assemble_equation(intercept, coefficients, x_values=None, output=None):
     equation = f'y = {intercept}'
     for i, coef in enumerate(coefficients):
@@ -44,17 +56,6 @@ def calculate_output(intercept, coefficients, dataset):
         outputs.append(result)
 
     return outputs, x_values
-
-intercept = 3.4
-
-# dataset with 4 features corresponds to 4 coefficients
-coeffs = [3.2, 2.1, 4.5, 2.6]
-dataset = {
-    0: [3, 1.5],
-    1: [1, 7.6],
-    2: [3, 8.3],
-    3: [4, 3.2]
-}
 
 # get the formula
 formula = assemble_equation(intercept, coeffs)
