@@ -1,10 +1,5 @@
-from sklearn.datasets import load_boston
+from load_dataset import x, y
 from linear_regression import LinearRegression
-
-# load dataset
-boston = load_boston()
-x = boston.data
-y = boston.target
 
 # instantiate linear regression class
 lr = LinearRegression()
