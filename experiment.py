@@ -57,12 +57,11 @@ def calculate_output(intercept, coefficients, dataset):
 
     return outputs, x_values
 
-# get the formula
-formula = assemble_equation(intercept, coeffs)
-
 # calculate outputs from x_values
 outputs, x_values = calculate_output(intercept, coeffs, dataset)
 
+# get the formula
+formula = assemble_equation(intercept, coeffs)
 print(f'Formula: {formula}')
 
 # display the equations for each observation
