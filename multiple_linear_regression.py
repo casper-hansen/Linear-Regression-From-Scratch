@@ -11,8 +11,9 @@ class MultipleLinearRegression():
 
         betas = self._estimate_coefficients(x, y)
         
-        self.intercept = betas[0]
-        self.coefficients = betas[1:]
+        #self.intercept = betas[0]
+        self.intercept = np.average(y.values)
+        self.coefficients = betas
 
     def predict(self, x):
         '''
@@ -23,7 +24,7 @@ class MultipleLinearRegression():
             values = row.values
 
             pred = np.multiply(values, self.coefficients)
-            pred = np.add(pred, self.intercept)
+            pred = sum(pred)
 
             predictions.append(pred)
 
@@ -35,14 +36,15 @@ class MultipleLinearRegression():
             rss = sum_{i=0}^{n} (y_i - y_hat)^2
             tss = sum_{i=0}^{n} (y_i - y_bar)^2
         '''
-        y_average = np.average(y_true)
+        y_values = y_true.values
+        y_average = np.average(y_values)
 
         residual_sum_of_squares = 0
         total_sum_of_squares = 0
 
-        for i in range(len(y_true)):
-            residual_sum_of_squares += (y_true[i] - y_pred[i])**2
-            total_sum_of_squares += (y_true[i] - y_average)**2
+        for i in range(len(y_values)):
+            residual_sum_of_squares += (y_values[i] - y_pred[i])**2
+            total_sum_of_squares += (y_values[i] - y_average)**2
 
         return 1 - (residual_sum_of_squares/total_sum_of_squares)
 
