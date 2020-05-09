@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 def sklearn_to_df(data_loader):
     X_data = data_loader.data
     X_columns = data_loader.feature_names
-    X = pd.DataFrame(X_data, columns=X_columns)
+    x = pd.DataFrame(X_data, columns=X_columns)
 
     y_data = data_loader.target
     y = pd.Series(y_data, name='target')
