@@ -10,7 +10,7 @@ def sklearn_to_df(data_loader):
     y_data = data_loader.target
     y = pd.Series(y_data, name='target')
 
-    return X, y
+    return x, y
 
 x, y = sklearn_to_df(load_boston())
 
