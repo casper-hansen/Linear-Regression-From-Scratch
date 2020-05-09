@@ -6,10 +6,17 @@ class SimpleLinearRegression():
         self.intercept = None
 
     def fit(self, x, y):
+        '''
+            Given a dataset with 1 input feature x and output feature y,
+            estimates the coefficient and compute the intercept.
+        '''
         self.coefficient = self._coefficient_estimate(x, y)
         self.intercept = self._compute_intercept(x, y)
 
     def predict(self, x):
+        '''
+            y = b_0 + b_1*x
+        '''
         x_times_coeff = np.multiply(x, self.coefficient)
         return np.add(x_times_coeff, self.intercept)
 
@@ -38,7 +45,7 @@ class SimpleLinearRegression():
                     x_bar = average(x),
                     coefficient = coefficient already estimated
         '''
-        # for each feature, find the average
+        # find the average of the array x
         x_average = np.average(x)
 
         # multiply the coefficient and the average of the x values
