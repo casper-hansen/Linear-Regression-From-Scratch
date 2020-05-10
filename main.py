@@ -17,6 +17,11 @@ pred = mlr.predict(x_test)
 score = mlr.r2_score(y_test, pred)
 print(f'Our Final R^2 score: {score}')
 
+# polynomial regression experiment
+polynomial_pred = mlr.predict_polynomial(x_test)
+polynomial_score = mlr.r2_score(y_test, polynomial_pred)
+print(f'Our Final Polynomial R^2 score: {polynomial_score}')
+
 # # # # # # # # # # # # # # # # # #
 # Scikit-Learn's Linear Regression #
 # # # # # # # # # # # # # # # # # #

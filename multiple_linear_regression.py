@@ -35,6 +35,23 @@ class MultipleLinearRegression():
 
         return predictions
 
+    def predict_polynomial(self, x):
+        '''
+            y = β0 + β1*x + β2*x^2 + ... + βm*x_i^m
+        '''
+        predictions = []
+        for index, row in x.iterrows():
+            # treating each feature as a variable that needs to be raised to the power of m
+            polynomial_values = [feature**i+1 for i, feature in enumerate(row.values)]
+
+            pred = np.multiply(polynomial_values, self.coefficients)
+            pred = sum(pred)
+            pred += self.intercept
+
+            predictions.append(pred)
+
+        return predictions
+
     def r2_score(self, y_true, y_pred):
         '''
             r2 = 1 - (rss/tss)
