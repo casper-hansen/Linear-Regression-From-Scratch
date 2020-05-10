@@ -7,12 +7,16 @@ class MultipleLinearRegression():
         self.intercept = None
 
     def fit(self, x, y):
+        # prepare x and y values for coefficient estimates
         x = self._transform_x(x)
         y = self._transform_y(y)
 
         betas = self._estimate_coefficients(x, y)
         
+        # intercept becomes a vector of ones
         self.intercept = betas[0]
+
+        # coefficients becomes the rest of the betas
         self.coefficients = betas[1:]
 
     def predict(self, x):
