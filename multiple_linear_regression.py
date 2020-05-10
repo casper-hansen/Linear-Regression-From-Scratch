@@ -1,4 +1,5 @@
 import numpy as np
+import copy
 
 class MultipleLinearRegression():
     def __init__(self):
@@ -11,9 +12,8 @@ class MultipleLinearRegression():
 
         betas = self._estimate_coefficients(x, y)
         
-        #self.intercept = betas[0]
-        self.intercept = np.average(y.values)
-        self.coefficients = betas
+        self.intercept = betas[0]
+        self.coefficients = betas[1:]
 
     def predict(self, x):
         '''
@@ -25,6 +25,7 @@ class MultipleLinearRegression():
 
             pred = np.multiply(values, self.coefficients)
             pred = sum(pred)
+            pred += self.intercept
 
             predictions.append(pred)
 
@@ -49,10 +50,13 @@ class MultipleLinearRegression():
         return 1 - (residual_sum_of_squares/total_sum_of_squares)
 
     def _transform_x(self, x):
-        return x
+        x = copy.deepcopy(x)
+        x.insert(0, 'ones', np.ones( (x.shape[0], 1) ))
+        return x.values
 
     def _transform_y(self, y):
-        return y
+        y = copy.deepcopy(y)
+        return y.values
 
     def _estimate_coefficients(self, x, y):
         '''
